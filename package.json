@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --aot",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "publish:build": "ng build --prod --base-href \"https://fabiobiondi.github.io/training-arf/\"",
+    "publish:pages": "npx angular-cli-ghpages --dir=dist/reactive-forms-repo",
+    "publish": "npm run publish:build && npm run publish:pages"
   },
   "private": true,
   "dependencies": {
