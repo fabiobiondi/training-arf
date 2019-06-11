@@ -113,7 +113,7 @@ export function vatCFValidator(c: AbstractControl, requiredNumber: number): { [s
     return {
       wrong: true,
       diff: diff > 0 ? `+${diff}` : `${diff}`,
-      required: requiredNumber
+      requiredLength: requiredNumber
     };
   }
 }
