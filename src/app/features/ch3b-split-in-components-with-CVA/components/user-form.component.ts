@@ -97,7 +97,8 @@ export class UserFormComponent implements ControlValueAccessor, Validator {
    * Invoked each time form fields are updated
    */
   validate(c: AbstractControl): ValidationErrors | null {
-    return this.form.invalid ? { missingFields: true} : null;
+    return c.value && this.form.invalid ? { missingFields: true } : null;
+
   }
 
 }
