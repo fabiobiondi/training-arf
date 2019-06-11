@@ -12,7 +12,7 @@ import { Meteo } from '../../features/ch1-reactive-forms-intro/meteo';
       <!--meteo icon-->
       <img
         *ngIf="data?.weather[0].icon"
-        [src]="'http://openweathermap.org/img/w/' + data?.weather[0].icon + '.png'">
+        [src]="'https://openweathermap.org/img/w/' + data?.weather[0].icon + '.png'">
       <!--temp-->
       <div class="meteo mr-2">{{data?.main.temp}}°</div>
       <!--meteo description-->
