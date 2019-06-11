@@ -1,5 +1,4 @@
 import { FormGroup } from '@angular/forms';
-import { ControlData } from './input-config.interface';
 
 export interface FormControlComponent {
   config: ControlData;
