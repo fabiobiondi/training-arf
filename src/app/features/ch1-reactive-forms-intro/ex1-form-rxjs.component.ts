@@ -15,6 +15,7 @@ import { fromEvent } from 'rxjs';
         <br>
         <fb-meteo-http [text]="text"></fb-meteo-http>
       </div>
+    </div>
   `
 })
 export class Ex1FormRxjsComponent implements OnInit, AfterViewInit {
