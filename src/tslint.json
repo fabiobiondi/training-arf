@@ -1,0 +1,18 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+      "no-trailing-whitespace": false,
+      "directive-selector": [
+            true,
+            "attribute",
+            "fb",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "fb",
+            "kebab-case"
+        ]
+    }
+}
