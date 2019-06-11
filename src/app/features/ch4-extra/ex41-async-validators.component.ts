@@ -17,16 +17,11 @@ import { UserValidator } from './validators/user-async.validator';
         placeholder="Search username"
       >
 
-      <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw" *ngIf="form.get('name').pending"></i>
-
-      <button 
-        class="btn btn-primary"
-        *ngIf="form.valid"
-        [ngClass]="{'btn-success': form.valid, 'btn-warning': form.pending}"
-        [disabled]="form.invalid || form.pending"
-      > CONFIRM </button>
+      <button class="btn btn-primary" type="button" [disabled]="form.invalid || form.pending">
+        <span class="spinner-border spinner-border-sm" *ngIf="form.get('name').pending"></span>
+        {{form.pending? 'LOADING' : 'CONFIRM'}}
+      </button>
       
-
     </form>
     <p class="text-danger" *ngIf="!!form.get('name').errors?.minlength">
       Too short. Min 3 characters
