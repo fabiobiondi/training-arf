@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 @Component({
   selector: 'fb-ex6-form-builder',
   template: `
-    <form [formGroup]="form" (submit)="add(form.value)">
+    <form [formGroup]="form" (submit)="add()">
 
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" formControlName="isCompany" id="chk">

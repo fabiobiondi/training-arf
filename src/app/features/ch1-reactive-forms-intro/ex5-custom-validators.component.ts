@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 @Component({
   selector: 'fb-ex5-form-builder',
   template: `
-    <form [formGroup]="form" (submit)="add(form.value)">
+    <form [formGroup]="form" (submit)="add()">
       <div class="form-group">
         <input
           class="form-control form-control-lg" type="text" formControlName="company"
