@@ -45,7 +45,7 @@ export class MeteoHttpComponent implements OnChanges {
   }
 
   fetchData(text = '') {
-    this.http.get<Meteo>(`http://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&APPID=eb03b1f5e5afb5f4a4edb40c1ef2f534`)
+    this.http.get<Meteo>(`https://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&APPID=eb03b1f5e5afb5f4a4edb40c1ef2f534`)
       .subscribe(
         (res: Meteo) => {
           this.error = null;
