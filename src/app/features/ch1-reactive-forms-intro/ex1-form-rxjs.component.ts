@@ -18,14 +18,14 @@ import { fromEvent } from 'rxjs';
     </div>
   `
 })
-export class Ex1FormRxjsComponent implements OnInit, AfterViewInit {
-  @ViewChild('usernameRef') username: ElementRef;
+export class Ex1FormRxjsComponent implements AfterViewInit {
+  @ViewChild('usernameRef') username: ElementRef<HTMLInputElement>;
   text = 'Trieste';
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     fromEvent(this.username.nativeElement, 'keyup')
       .pipe(
-        map((e: any) => e.target.value),
+        map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
         filter((text: string) => text.length > 3),
         debounceTime(1000),
         distinctUntilChanged()
@@ -33,9 +33,7 @@ export class Ex1FormRxjsComponent implements OnInit, AfterViewInit {
       .subscribe((text: string) => {
         this.text = text;
       });
-  }
 
-  ngAfterViewInit() {
     const inputRef = this.username.nativeElement as HTMLInputElement;
     inputRef.value = this.text;
   }
