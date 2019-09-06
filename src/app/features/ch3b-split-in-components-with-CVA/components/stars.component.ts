@@ -48,7 +48,7 @@ export class StarsComponent implements ControlValueAccessor, Validator {
    * Invoked each time form fields are updated
    */
   validate(c) {
-    return this.value > 0 ? null : { required: true };
+    return this.value > 1 ? null : { toolow: true };
   }
 
   /**

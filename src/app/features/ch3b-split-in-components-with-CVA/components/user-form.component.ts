@@ -84,13 +84,7 @@ export class UserFormComponent implements ControlValueAccessor, Validator {
    * so parent form receives new value, dirty or invalid state
    */
   onChangedHandler(event: KeyboardEvent) {
-    const input = (event.target as HTMLInputElement)
-    const controlName = input.getAttribute('formControlName');
-    const value = input.value;
-    this.onChanged({
-      ...this.form.value,
-      [controlName]: value
-    });
+    this.onChanged(this.form.value)
   }
 
   /**

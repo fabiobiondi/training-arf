@@ -31,7 +31,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
           </div>
         </small>
       </div>
-
+      
       <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
         SUBMIT
       </button>

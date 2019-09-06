@@ -23,18 +23,11 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 
         <!--ERRORS-->
         <small class="form-text text-muted">
-          <div *ngIf="!!form.get('vatNumber').errors?.alphaNumeric">
-            Must be alphanumeric
-          </div>
-        </small>
-
-        <!--ERRORS-->
-        <small class="form-text text-muted">
           <small class="form-text text-muted">Example: 01116230317</small>
           <div *ngIf="form.controls['vatNumber'].errors?.diff as diff">
             Format error: {{diff}} chars
           </div>
-          <div *ngIf="!!form.controls.vatNumber.errors?.alphaNumeric">
+          <div *ngIf="!!form.get('vatNumber').errors?.alphaNumeric">
             Must be alphanumeric
           </div>
         </small>
@@ -74,8 +67,8 @@ export function vatCFValidator(c: AbstractControl, requiredNumber: number): { [s
   }
 
   // check missing or extra charatecters
-  const diff =  (c.value.length || 0) - requiredNumber;
-  if (c.value && diff) {
+  const diff =  (c.value.length ) - requiredNumber;
+  if (c.value) {
     return {
       diff: diff > 0 ? `+${diff}` : diff,
       required: requiredNumber
