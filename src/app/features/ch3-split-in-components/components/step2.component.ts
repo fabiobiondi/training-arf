@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'fb-step-2',
   template: `
-    <div [formGroup]="group.get('step2')" *ngIf="group.get('step2') as subGroup" >
+    <div [formGroup]="subGroup" >
       <h4>
         <i class="fa fa-check" *ngIf="subGroup.valid" style="color: green"></i>
         Step2: Car Details
@@ -15,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
                formControlName="kw"
                class="form-control"
                placeholder="Kw *"
-               [ngClass]="{'is-invalid': subGroup?.controls['kw']?.invalid}"
+               [ngClass]="{'is-invalid': subGroup?.get('kw')?.invalid}"
         >
       </div>
 
@@ -24,7 +24,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
                formControlName="km"
                class="form-control"
                placeholder="Km *"
-               [ngClass]="{'is-invalid': subGroup?.controls['km']?.invalid}"
+               [ngClass]="{'is-invalid': subGroup?.get('km')?.invalid}"
         >
       </div>
     </div>
@@ -32,13 +32,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class Step2Component implements OnInit {
   @Input() group: FormGroup;
+  subGroup: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.group.addControl('step2',  this.fb.group({
+    this.subGroup = this.fb.group({
       kw: [null, Validators.required],
       km: [null, Validators.required],
-    }));
+    });
+    this.group.addControl('step2', this.subGroup) ;
   }
 }
