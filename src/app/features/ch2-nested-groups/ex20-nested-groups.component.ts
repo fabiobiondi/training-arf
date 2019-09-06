@@ -29,7 +29,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
                  formControlName="brand"
                  class="form-control"
                  placeholder="Car Brand *"
-                 [ngClass]="{'is-invalid': step1.controls['brand'].invalid}"
+                 [ngClass]="{'is-invalid': step1.get('brand').invalid}"
           >
         </div>
 
@@ -38,7 +38,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
                  formControlName="model"
                  class="form-control"
                  placeholder="Car Model *"
-                 [ngClass]="{'is-invalid': step1.controls['model'].invalid}"
+                 [ngClass]="{'is-invalid': step1.get('model').invalid}"
           >
         </div>
       </div>
