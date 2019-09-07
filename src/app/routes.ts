@@ -33,13 +33,13 @@ export const routes: Routes = [
   { path: 'ex6-conditional-validators', component: Ex6ConditionalValidatorComponent, data: {label: 'Conditional Validators'}},
   // chapter 2: Nested Groups
   { path: 'ex20-nested-groups', component: Ex20NestedGroupsComponent, data: {label: 'Nested Group'}},
-  { path: 'ex23-form-array', component: Ex23FormArrayComponent, data: {label: 'Form Array'}},
   // chapter 3: Split in Components
   { path: 'ex30-split-in-components', component: Ex30SplitComponent, data: {label: 'Split Form in Components'}},
   { path: 'ex31-split-in-components-with-CVA', component: Ex31SplitWithCVAComponent, data: {label: 'Split Form in Components with ControlValueAccessor'}},
   { path: 'ex32-split-in-components-with-CVA-tpl', component: Ex32SplitWithCVAAndTemplateDrivenComponent, data: {label: 'Split Form in Components with ControlValueAccessor & template-driven form'}},
   { path: 'ex33-multistep-forms-with-CVA', component: Ex33MultistepFormsWithCVAComponent, data: {label: 'Multistep Form with ControlValueAccessor'}},
   // chapter 4: Extra
+  { path: 'ex23-form-array', component: Ex23FormArrayComponent, data: {label: 'Form Array'}},
   { path: 'ex40-group-validator', component: Ex40GroupValidatorsComponent, data: {label: 'Group Custom Validator'}},
   { path: 'ex41-async-validator', component: Ex41AsyncValidatorsComponent, data: {label: 'Async Control Validator'}},
   { path: 'ex42-color-picker-validator', component: Ex42ColorPickerComponent, data: {label: 'ControlValueAccessor: Color Picker custom control'}},
