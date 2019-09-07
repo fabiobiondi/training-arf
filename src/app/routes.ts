@@ -44,7 +44,7 @@ export const routes: Routes = [
   { path: 'ex41-async-validator', component: Ex41AsyncValidatorsComponent, data: {label: 'Async Control Validator'}},
   { path: 'ex23-form-array', component: Ex23FormArrayComponent, data: {label: 'Form Array'}},
   // chapter 5: Dynamic Form
-  { path: 'ex50-dynamic-form-json', component: Ex50DynamicFormJsonComponent, data: {label: 'Dynamic Form Created by JSON'}},
+  { path: 'ex50-dynamic-form-json', component: Ex50DynamicFormJsonComponent, data: {label: 'Dynamic Form Created by JSON (with ngSwitch & custom loader directive)'}},
   { path: 'ex100-tpl-driven-custom-validator', component: Ex10TplDrivenCustomValidatorsComponent, data: {label: 'Template Driven Custom Sync & Async Validator'}},
   { path: '', component: ChaptersComponent}
 ];
