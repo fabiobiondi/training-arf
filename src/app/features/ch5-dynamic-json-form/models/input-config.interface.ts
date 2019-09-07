@@ -1,11 +1,11 @@
 import { FormGroup } from '@angular/forms';
 
 export interface FormControlComponent {
-  config: ControlData;
+  config: ControlConfiguration;
   group: FormGroup;
 }
 
-export interface ControlData {
+export interface ControlConfiguration {
   label?: string;
   name: string;
   value?: any;

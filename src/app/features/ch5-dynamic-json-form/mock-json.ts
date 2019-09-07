@@ -1,6 +1,6 @@
-import { ControlData } from './models/input-config.interface';
+import { ControlConfiguration } from './models/input-config.interface';
 
-export const LOAD_FORM_CONFIGURATION: ControlData[] = [
+export const LOAD_FORM_CONFIGURATION: ControlConfiguration[] = [
   {
     type: 'input',
     label: 'Full name',

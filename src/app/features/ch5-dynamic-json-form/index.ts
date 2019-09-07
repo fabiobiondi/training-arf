@@ -6,6 +6,10 @@ import { DynamicControlDirective } from './form-components/dynamic-control.direc
 
 export const COMPONENTS = [
   Ex50DynamicFormJsonComponent,
+  FormInputComponent,
+  FormSelectComponent,
+  FormButtonComponent
+
 ];
 
 export const DIRECTIVES = [

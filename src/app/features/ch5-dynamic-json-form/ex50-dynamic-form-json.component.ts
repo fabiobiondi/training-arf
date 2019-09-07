@@ -1,12 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { LOAD_FORM_CONFIGURATION } from './mock-json';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ControlData } from './models/input-config.interface';
+import { ControlConfiguration } from './models/input-config.interface';
 
 @Component({
   selector: 'fb-dynamic-form-view-usage',
   template: `
-    <h2>MY DYNAMIC FORM</h2>
+
+    <h2>MY DYNAMIC FORM (ngSwitch)</h2>
+
+    <form
+      class="dynamic-form"
+      [formGroup]="form"
+      (ngSubmit)="handleSubmit()"
+    >
+      <div
+        *ngFor="let config of formConfiguration"
+        [ngSwitch]="config.type">
+
+        <div *ngSwitchCase="'input'">
+          <fb-form-input [group]="form" [config]="config"></fb-form-input>
+        </div>
+
+        <div *ngSwitchCase="'select'">
+          <fb-form-select [group]="form" [config]="config"></fb-form-select>
+        </div>
+
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Save</button>
+
+    </form>
+    
+    <hr>
+    
+    
+    <h2>MY DYNAMIC FORM (loader)</h2>
 
     <form
       class="dynamic-form"
@@ -14,9 +43,9 @@ import { ControlData } from './models/input-config.interface';
       (ngSubmit)="handleSubmit()"
     >
       <ng-container
-        *ngFor="let data of config;"
+        *ngFor="let config of formConfiguration;"
         fbDynamicControl
-        [data]="data"
+        [config]="config"
         [group]="form">
       </ng-container>
     </form>
@@ -24,11 +53,12 @@ import { ControlData } from './models/input-config.interface';
     <pre>Valid: {{ form.valid }}</pre>
     <pre>Form Value: {{ form.value | json }}</pre>
 
+      
   `
 })
 export class Ex50DynamicFormJsonComponent implements OnInit {
   form: FormGroup;
-  config: ControlData[] = LOAD_FORM_CONFIGURATION;
+  formConfiguration: ControlConfiguration[] = LOAD_FORM_CONFIGURATION;
 
   constructor(private fb: FormBuilder) {}
 
@@ -37,7 +67,7 @@ export class Ex50DynamicFormJsonComponent implements OnInit {
   }
 
   formCreation() {
-    return this.config.reduce((acc, curr) => {
+    return this.formConfiguration.reduce((acc, curr) => {
       acc[curr.name] = [
         curr.value || '',
         Validators.compose([

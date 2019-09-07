@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormControlComponent, ControlData } from '../models/input-config.interface';
+import { FormControlComponent, ControlConfiguration } from '../models/input-config.interface';
 
 @Component({
   selector: 'fb-form-select',
@@ -19,6 +19,6 @@ import { FormControlComponent, ControlData } from '../models/input-config.interf
   `,
 })
 export class FormSelectComponent implements FormControlComponent {
-  config: ControlData;
-  group: FormGroup;
+  @Input() config: ControlConfiguration;
+  @Input() group: FormGroup;
 }
