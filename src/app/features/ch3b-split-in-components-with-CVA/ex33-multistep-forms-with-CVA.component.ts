@@ -7,45 +7,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     <form [formGroup]="form">
 
       <div [ngSwitch]="step">
-        <fb-multi-step 
-          *ngSwitchCase="0" 
-          [stepName]="'STEP 1: Username'" 
-          [isNext]="form.get('yourname').valid" 
-          (next)="step = 1"
+        <fb-multi-step
+          *ngSwitchCase="0"
+          [title]="'STEP 1: Username'"
+          [showNext]="form.get('yourname').valid"
+          (gotoNextStep)="step = 1"
         >
           <input type="text" formControlName="yourname" class="form-control" placeholder="username * ">
         </fb-multi-step>
 
-        <fb-multi-step 
+        <fb-multi-step
           *ngSwitchCase="1"
-          [stepName]="'STEP 2: User Form'"
-          [isNext]="form.get('userForm').valid"
-          (next)="step = 2"
+          [title]="'STEP 2: User Form'"
+          [showNext]="form.get('userForm').valid"
+          (gotoNextStep)="step = 2"
         >
           <fb-user-form formControlName="userForm"></fb-user-form>
         </fb-multi-step>
-          
-        <fb-multi-step 
+
+        <fb-multi-step
           *ngSwitchCase="2"
-          [stepName]="'STEP 2: Company Form'"
-          [isNext]="form.get('companyForm').valid"
-          (next)="step = 3"
+          [title]="'STEP 2: Company Form'"
+          [showNext]="form.get('companyForm').valid"
+          (gotoNextStep)="step = 3"
         >
           <fb-company-form formControlName="companyForm"></fb-company-form>
         </fb-multi-step>
-  
-        <fb-multi-step 
+
+        <fb-multi-step
           *ngSwitchCase="3"
-          [stepName]="'STEP 3: Rate the event'"
-          [isSubmit]="form.get('stars').valid"
-          (submit)="save(form)"
+          [title]="'STEP 3: Rate the event'"
+          [showSubmit]="form.get('stars').valid"
+          (submitForm)="save(form)"
         >
           <fb-form-stars formControlName="stars"></fb-form-stars>
         </fb-multi-step>
       </div>
     </form>
 
-    
+
     <hr>
 <pre>
 Form Dirty: {{form.dirty }}
@@ -57,7 +57,7 @@ User Errors: {{form.get('userForm').errors | json}}
 CompanyInfo Errors: {{form.get('companyForm').errors | json}}
 Star Errors: {{form.get('stars').errors | json}}
 </pre>
-    
+
   `,
 })
 export class Ex33MultistepFormsWithCVAComponent {

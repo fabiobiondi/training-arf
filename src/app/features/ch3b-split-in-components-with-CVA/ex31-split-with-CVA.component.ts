@@ -58,6 +58,7 @@ export class Ex31SplitWithCVAComponent {
       .subscribe(value => this.enableCompany(value));
 
     // Update Form Data
+    // (in order to test if 'writeValue' work in components)
     // setTimeout(() => this.populateForm(), 2000);
   }
 

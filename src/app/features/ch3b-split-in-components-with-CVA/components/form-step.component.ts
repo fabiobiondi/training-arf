@@ -4,42 +4,44 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'fb-multi-step',
   template: `
     <div class="card">
-      <div class="card-header">{{stepName}}</div>
-      
+      <div class="card-header">{{title}}</div>
+
       <div class="card-body">
         <ng-content></ng-content>
 
         <hr>
         <div class="btn-group">
           <button
-            [disabled]="!isNext"
-            (click)="next.emit()"
+            [disabled]="!showNext"
+            (click)="gotoNextStep.emit()"
             class="btn"
             [ngClass]="{
-              'btn-warning': isNext,
-              'btn-outline-warning': !isNext
+              'btn-warning': showNext,
+              'btn-outline-warning': !showNext
             }"
-            type="button">NEXT</button>
-  
+            type="button">NEXT
+          </button>
+
           <button
-            [disabled]="!isSubmit"
-            (click)="submit.emit()"
+            [disabled]="!showSubmit"
+            (click)="submitForm.emit()"
             class="btn"
             [ngClass]="{
-              'btn-success': isSubmit,
-              'btn-outline-success': !isSubmit
+              'btn-success': showSubmit,
+              'btn-outline-success': !showSubmit
             }"
-            type="button">SUBMIT</button>
+            type="button">SUBMIT
+          </button>
         </div>
       </div>
     </div>
   `
 })
 export class FormStepComponent {
-  @Input() stepName: string;
-  @Input() isNext: boolean;
-  @Input() isSubmit: boolean;
-  @Output() next: EventEmitter<any> = new EventEmitter();
-  @Output() submit: EventEmitter<any> = new EventEmitter();
+  @Input() title: string;
+  @Input() showNext: boolean;
+  @Input() showSubmit: boolean;
+  @Output() gotoNextStep: EventEmitter<any> = new EventEmitter();
+  @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
 }
