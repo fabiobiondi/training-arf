@@ -9,6 +9,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
            *ngFor="let item of items.controls; let i = index; let last = last">
 
         <div [formGroupName]="i" class="form-group form-inline">
+          {{item.valid}}
           <i class="fa fa-exclamation-circle fa-2x text-danger" *ngIf="item.invalid"></i>
           <i class="fa fa-check-circle fa-2x text-success" *ngIf="item.valid"></i>
 
@@ -26,6 +27,10 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
         (click)="submit()" 
         [disabled]="orderForm.invalid">Submit</button>
     </form>
+    
+    <pre>
+      {{orderForm.value | json}}
+    </pre>
   `,
 })
 export class Ex23FormArrayComponent {
@@ -51,7 +56,7 @@ export class Ex23FormArrayComponent {
     this.items.push(this.createItem());
   }
 
-  removeItem(item: FormGroup): void {
+  removeItem(item: AbstractControl): void {
     const index = this.items.controls.indexOf(item);
     this.items.removeAt(index);
   }
