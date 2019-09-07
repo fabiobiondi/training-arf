@@ -15,7 +15,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
       <hr>
       <fb-user-form formControlName="userForm"></fb-user-form>
       <hr>
-      Your Rate* : 
+      Your Rate (must be > 1)* : 
       <fb-form-stars formControlName="stars"></fb-form-stars>
 
       <hr>
