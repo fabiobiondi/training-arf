@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormControl } from '@angular/forms';
 import { Observable, timer } from 'rxjs';
 import { map, switchMap  } from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ export class UserValidator {
   }
 
   uniqueName(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+    return (control: FormControl): Observable<{ [key: string]: any } | null> => {
       return this.searchUser(control.value)
         .pipe(
           map(res => res.length ? { notAvailable: true } : null)
