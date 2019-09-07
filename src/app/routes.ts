@@ -38,11 +38,11 @@ export const routes: Routes = [
   { path: 'ex31-split-in-components-with-CVA', component: Ex31SplitWithCVAComponent, data: {label: 'Split Form in Components with ControlValueAccessor'}},
   { path: 'ex32-split-in-components-with-CVA-tpl', component: Ex32SplitWithCVAAndTemplateDrivenComponent, data: {label: 'Split Form in Components with ControlValueAccessor & template-driven form'}},
   { path: 'ex33-multistep-forms-with-CVA', component: Ex33MultistepFormsWithCVAComponent, data: {label: 'Multistep Form with ControlValueAccessor'}},
+  { path: 'ex42-color-picker-validator', component: Ex42ColorPickerComponent, data: {label: 'ControlValueAccessor: Color Picker custom control'}},
   // chapter 4: Extra
-  { path: 'ex23-form-array', component: Ex23FormArrayComponent, data: {label: 'Form Array'}},
   { path: 'ex40-group-validator', component: Ex40GroupValidatorsComponent, data: {label: 'Group Custom Validator'}},
   { path: 'ex41-async-validator', component: Ex41AsyncValidatorsComponent, data: {label: 'Async Control Validator'}},
-  { path: 'ex42-color-picker-validator', component: Ex42ColorPickerComponent, data: {label: 'ControlValueAccessor: Color Picker custom control'}},
+  { path: 'ex23-form-array', component: Ex23FormArrayComponent, data: {label: 'Form Array'}},
   // chapter 5: Dynamic Form
   { path: 'ex50-dynamic-form-json', component: Ex50DynamicFormJsonComponent, data: {label: 'Dynamic Form Created by JSON'}},
   { path: 'ex100-tpl-driven-custom-validator', component: Ex10TplDrivenCustomValidatorsComponent, data: {label: 'Template Driven Custom Sync & Async Validator'}},
