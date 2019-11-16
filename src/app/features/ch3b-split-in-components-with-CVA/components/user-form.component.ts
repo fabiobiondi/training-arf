@@ -16,38 +16,38 @@ import {
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => UserFormComponent), multi: true }
   ],
   template: `
-    
-      <div 
-        [formGroup]="form"
-        class="alert"
-        [ngClass]="{
+
+    <div
+      [formGroup]="form"
+      class="alert"
+      [ngClass]="{
           'alert-success': form.valid, 
           'alert-danger': form.invalid 
         }"
-        
-      >
-        <div class="form-group">
-          <input type="text"
-                 formControlName="name"
-                 class="form-control"
-                 (blur)="onTouched()"
-                 (input)="onChangedHandler($event)"
-                 placeholder="Your Name *"
-                 [ngClass]="{'is-invalid': form.get('name').invalid}"
-          >
-        </div>
 
-        <div class="form-group">
-          <input type="text"
-                 formControlName="surname"
-                 (blur)="onTouched()"
-                 (input)="onChangedHandler($event)"
-                 class="form-control"
-                 placeholder="Surname *"
-                 [ngClass]="{'is-invalid': form.get('surname').invalid}"
-          >
-        </div>
+    >
+      <div class="form-group">
+        <input type="text"
+               formControlName="name"
+               class="form-control"
+               (blur)="onTouched()"
+               (input)="onChangedHandler()"
+               placeholder="Your Name *"
+               [ngClass]="{'is-invalid': form.get('name').invalid}"
+        >
       </div>
+
+      <div class="form-group">
+        <input type="text"
+               formControlName="surname"
+               (blur)="onTouched()"
+               (input)="onChangedHandler()"
+               class="form-control"
+               placeholder="Surname *"
+               [ngClass]="{'is-invalid': form.get('surname').invalid}"
+        >
+      </div>
+    </div>
   `
 })
 export class UserFormComponent implements ControlValueAccessor, Validator {
@@ -74,7 +74,8 @@ export class UserFormComponent implements ControlValueAccessor, Validator {
    */
   writeValue(val: any): void {
     if (val) {
-      this.form.setValue(val, { emitEvent: false });
+      // this.form.setValue(val, { emitEvent: false });
+      this.form.setValue(val);
     }
   }
 
@@ -83,19 +84,15 @@ export class UserFormComponent implements ControlValueAccessor, Validator {
    * Update the form model when it changes,
    * so parent form receives new value, dirty or invalid state
    */
-  onChangedHandler(event: KeyboardEvent) {
-    this.onChanged(this.form.value)
+  onChangedHandler() {
+    this.onChanged( this.form.value );
   }
 
   /**
    * Invoked each time form fields are updated
    */
   validate(c: AbstractControl): ValidationErrors | null {
-    return c.value && this.form.invalid ? { missingFields: true } : null;
-
+    return this.form.invalid ? { missingFields: true } : null;
   }
 
 }
-
-
-

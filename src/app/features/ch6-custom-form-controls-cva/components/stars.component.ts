@@ -8,7 +8,7 @@ import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } fro
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => StarsComponent), multi: true }
   ],
   template: `
-  
+
     <div>
       <i
         *ngFor="let star of [null,null,null]; let i = index"
@@ -48,7 +48,7 @@ export class StarsComponent implements ControlValueAccessor, Validator {
    * Invoked each time form fields are updated
    */
   validate(c) {
-    return this.value > 1 ? null : { toolow: true };
+    return this.value > 0 ? null : { empty: true };
   }
 
   /**

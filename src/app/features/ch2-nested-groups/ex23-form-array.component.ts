@@ -5,11 +5,10 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
   selector: 'fb-ex23-form-array',
   template: `
     <form [formGroup]="orderForm">
-      <div formArrayName="items" 
+      <div formArrayName="items"
            *ngFor="let item of items.controls; let i = index; let last = last">
 
         <div [formGroupName]="i" class="form-group form-inline">
-          {{item.valid}}
           <i class="fa fa-exclamation-circle fa-2x text-danger" *ngIf="item.invalid"></i>
           <i class="fa fa-check-circle fa-2x text-success" *ngIf="item.valid"></i>
 
@@ -20,17 +19,18 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
           <i class="fa fa-plus-circle fa-2x" (click)="addItem()" *ngIf="item?.valid && last"></i>
         </div>
       </div>
-      
+
       <hr>
-      <button 
-        class="btn btn-primary" 
-        (click)="submit()" 
+      <button
+        class="btn btn-primary"
+        (click)="submit()"
         [disabled]="orderForm.invalid">Submit</button>
     </form>
-    
+
     <pre>
       {{orderForm.value | json}}
     </pre>
+
   `,
 })
 export class Ex23FormArrayComponent {
@@ -45,15 +45,13 @@ export class Ex23FormArrayComponent {
     this.addItem();
   }
 
-  createItem(): FormGroup {
-    return this.fb.group({
-      name: ['',  Validators.required],
-      price: ['',  Validators.required],
-    });
-  }
-
   addItem(): void {
-    this.items.push(this.createItem());
+    this.items.push(
+      this.fb.group({
+        name: ['',  Validators.required],
+        price: ['',  Validators.required],
+      })
+    );
   }
 
   removeItem(item: AbstractControl): void {

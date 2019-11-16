@@ -19,7 +19,10 @@ import { fromEvent } from 'rxjs';
   `
 })
 export class Ex1FormRxjsComponent implements AfterViewInit {
+  // Angular < 7
   @ViewChild('usernameRef') username: ElementRef<HTMLInputElement>;
+  // A ngular 8+
+  // @ViewChild('usernameRef', { static: false }) username: ElementRef;
   text = 'Trieste';
 
   ngAfterViewInit() {

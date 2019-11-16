@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <fb-multi-step
           *ngSwitchCase="0"
           [title]="'STEP 1: Username'"
-          [showNext]="form.get('yourname').valid"
+          [showNextButton]="form.get('yourname').valid"
           (gotoNextStep)="step = 1"
         >
           <input type="text" formControlName="yourname" class="form-control" placeholder="username * ">
@@ -19,7 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <fb-multi-step
           *ngSwitchCase="1"
           [title]="'STEP 2: User Form'"
-          [showNext]="form.get('userForm').valid"
+          [showNextButton]="form.get('userForm').valid"
           (gotoNextStep)="step = 2"
         >
           <fb-user-form formControlName="userForm"></fb-user-form>
@@ -28,7 +28,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <fb-multi-step
           *ngSwitchCase="2"
           [title]="'STEP 2: Company Form'"
-          [showNext]="form.get('companyForm').valid"
+          [showNextButton]="form.get('companyForm').valid"
           (gotoNextStep)="step = 3"
         >
           <fb-company-form formControlName="companyForm"></fb-company-form>
@@ -37,7 +37,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <fb-multi-step
           *ngSwitchCase="3"
           [title]="'STEP 3: Rate the event'"
-          [showSubmit]="form.get('stars').valid"
+          [showSubmitButton]="form.get('stars').valid"
           (submitForm)="save(form)"
         >
           <fb-form-stars formControlName="stars"></fb-form-stars>
@@ -45,9 +45,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
       </div>
     </form>
 
-
     <hr>
-<pre>
+
+    <pre>
 Form Dirty: {{form.dirty }}
 Form Valid: {{form.valid }}
 Form Touched: {{form.touched }}
@@ -57,6 +57,7 @@ User Errors: {{form.get('userForm').errors | json}}
 CompanyInfo Errors: {{form.get('companyForm').errors | json}}
 Star Errors: {{form.get('stars').errors | json}}
 </pre>
+
 
   `,
 })

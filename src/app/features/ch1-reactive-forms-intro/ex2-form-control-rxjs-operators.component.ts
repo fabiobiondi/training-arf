@@ -47,7 +47,8 @@ export class Ex2FormControlRxjsOperatorsComponent {
         }
       );
 
-    // Need setValue instead of inizialize formControl in order to trigger a next in 'valueChanges' observable
+    // Need setValue instead of inizialize formControl in order to emit a value
+    // and trigger 'valueChanges' observable
     this.input.setValue('Rome');
   }
 

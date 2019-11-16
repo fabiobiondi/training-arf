@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { COMPONENTS } from './index';
-import { Chapter6CvaModule } from '../ch6-custom-form-controls-cva/chapter6-cva.module';
 
 @NgModule({
   declarations: [...COMPONENTS],
@@ -12,10 +11,9 @@ import { Chapter6CvaModule } from '../ch6-custom-form-controls-cva/chapter6-cva.
     CommonModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
-    Chapter6CvaModule
+    ReactiveFormsModule
   ]
 })
-export class Chapter3SplitInComponentsWithCVAModule {
+export class Chapter6CvaModule {
 
 }

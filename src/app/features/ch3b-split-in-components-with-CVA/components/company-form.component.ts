@@ -16,36 +16,35 @@ import {
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => CompanyFormComponent), multi: true }
   ],
   template: `
-    
-      <div 
-        [formGroup]="form"
-        class="alert"
-        [ngClass]="{
+    <div
+      [formGroup]="form"
+      class="alert"
+      [ngClass]="{
           'alert-success': form.valid, 
           'alert-danger': form.invalid 
         }"
-        
-      >
-        <div class="form-group">
-          <input type="text"
-                 formControlName="companyName"
-                 class="form-control"
-                 (blur)="onTouched()"
-                 placeholder="Company Name *"
-                 [ngClass]="{'is-invalid': form.get('companyName').invalid}"
-          >
-        </div>
 
-        <div class="form-group">
-          <input type="text"
-                 formControlName="vat"
-                 (blur)="onTouched()"
-                 class="form-control"
-                 placeholder="VAT *"
-                 [ngClass]="{'is-invalid': form.get('vat').invalid}"
-          >
-        </div>
+    >
+      <div class="form-group">
+        <input type="text"
+               formControlName="companyName"
+               class="form-control"
+               (blur)="onTouched()"
+               placeholder="Company Name *"
+               [ngClass]="{'is-invalid': form.get('companyName').invalid}"
+        >
       </div>
+
+      <div class="form-group">
+        <input type="text"
+               formControlName="vat"
+               (blur)="onTouched()"
+               class="form-control"
+               placeholder="VAT *"
+               [ngClass]="{'is-invalid': form.get('vat').invalid}"
+        >
+      </div>
+    </div>
   `
 })
 export class CompanyFormComponent implements ControlValueAccessor, Validator {
@@ -62,8 +61,10 @@ export class CompanyFormComponent implements ControlValueAccessor, Validator {
    * (i.e. with patchValue, setValue)
    */
   writeValue(val: any): void {
+    console.log(val)
     if (val) {
-      this.form.setValue(val, { emitEvent: false });
+      // this.form.setValue(val, { emitEvent: false });
+      this.form.setValue(val);
     }
   }
 
@@ -93,14 +94,10 @@ export class CompanyFormComponent implements ControlValueAccessor, Validator {
    * Invoked each time form fields are updated
    */
   validate(c: AbstractControl): ValidationErrors | null {
-    return c.value && this.form.invalid ? { missingFields: true } : null;
+    return this.form.invalid ? { missingFields: true } : null;
   }
 
   registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
-
 }
-
-
-

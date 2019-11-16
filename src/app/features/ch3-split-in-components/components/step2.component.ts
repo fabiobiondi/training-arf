@@ -4,12 +4,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'fb-step-2',
   template: `
-    <div [formGroup]="subGroup" >
+    <div [formGroup]="group.get('step2')" *ngIf="group.get('step2') as subGroup" >
       <h4>
         <i class="fa fa-check" *ngIf="subGroup.valid" style="color: green"></i>
         Step2: Car Details
       </h4>
-      
+
       <div class="form-group">
         <input type="text"
                formControlName="kw"
@@ -32,15 +32,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class Step2Component implements OnInit {
   @Input() group: FormGroup;
-  subGroup: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.subGroup = this.fb.group({
+    this.group.addControl('step2',  this.fb.group({
       kw: [null, Validators.required],
       km: [null, Validators.required],
-    });
-    this.group.addControl('step2', this.subGroup) ;
+    }));
   }
 }

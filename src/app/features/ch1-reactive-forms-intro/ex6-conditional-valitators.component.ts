@@ -12,20 +12,20 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
       </div>
 
       <div class="form-group">
-        <input 
+        <input
           class="form-control form-control-lg" type="text" formControlName="company"
           placeholder="Company Name *"
-          [ngClass]="{ 'is-invalid': form.controls.company.invalid}"
-          >
+          [ngClass]="{ 'is-invalid': form.controls.company.invalid && form.dirty}"
+        >
       </div>
 
       <div class="form-group">
 
-        <input 
+        <input
           class="form-control form-control-lg" type="text"
           formControlName="picf"
           [placeholder]="isCompany.value ? 'Your VAT number *' : 'Fiscal Code *'"
-          [ngClass]="{'is-invalid': form.controls.picf.errors?.wrong }"
+          [ngClass]="{'is-invalid': form.controls.picf.errors?.wrong  && form.dirty}"
         >
 
         <!--ERRORS-->

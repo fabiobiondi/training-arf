@@ -12,23 +12,23 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         <hr>
         <div class="btn-group">
           <button
-            [disabled]="!showNext"
+            [disabled]="!showNextButton"
             (click)="gotoNextStep.emit()"
             class="btn"
             [ngClass]="{
-              'btn-warning': showNext,
-              'btn-outline-warning': !showNext
+              'btn-warning': showNextButton,
+              'btn-outline-warning': !showNextButton
             }"
             type="button">NEXT
           </button>
 
           <button
-            [disabled]="!showSubmit"
+            [disabled]="!showSubmitButton"
             (click)="submitForm.emit()"
             class="btn"
             [ngClass]="{
-              'btn-success': showSubmit,
-              'btn-outline-success': !showSubmit
+              'btn-success': showSubmitButton,
+              'btn-outline-success': !showSubmitButton
             }"
             type="button">SUBMIT
           </button>
@@ -39,9 +39,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class FormStepComponent {
   @Input() title: string;
-  @Input() showNext: boolean;
-  @Input() showSubmit: boolean;
+  @Input() showNextButton: boolean;
+  @Input() showSubmitButton: boolean;
   @Output() gotoNextStep: EventEmitter<any> = new EventEmitter();
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
-
 }

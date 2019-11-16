@@ -9,7 +9,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
         <input
           class="form-control form-control-lg" type="text" formControlName="company"
           placeholder="Company Name *"
-          [ngClass]="{ 'is-invalid': form.controls['company'].invalid}"
+          [ngClass]="{ 'is-invalid': form.controls['company'].invalid && form.dirty}"
         >
       </div>
 
@@ -18,9 +18,11 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
           class="form-control form-control-lg" type="text"
           formControlName="vatNumber"
           placeholder="Your VAT number (no symbols - alphanumeric)*"
-          [ngClass]="{'is-invalid': form.get('vatNumber').invalid }"
+          [ngClass]="{'is-invalid': form.get('vatNumber').invalid && form.dirty}"
         >
 
+        <!--<pre>{{form.get('vatNumber').errors | json}}</pre>-->
+        
         <!--ERRORS-->
         <small class="form-text text-muted">
           <small class="form-text text-muted">Example: 01116230317</small>
@@ -67,8 +69,8 @@ export function vatCFValidator(c: AbstractControl, requiredNumber: number): { [s
   }
 
   // check missing or extra charatecters
-  const diff =  (c.value.length ) - requiredNumber;
-  if (c.value) {
+  const diff =  c.value.length - requiredNumber;
+  if (c.value && diff) {
     return {
       diff: diff > 0 ? `+${diff}` : diff,
       required: requiredNumber

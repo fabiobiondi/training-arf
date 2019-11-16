@@ -6,19 +6,19 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   template: `
     <form [formGroup]="form" (submit)="add()">
       <div class="form-group">
-        <input 
+        <input
           class="form-control form-control-lg" type="text" formControlName="company"
           placeholder="Company Name *"
-          [ngClass]="{ 'is-invalid': form.controls['company'].invalid}"
-          >
+          [ngClass]="{ 'is-invalid': form.controls['company'].invalid && form.dirty }"
+        >
       </div>
 
       <div class="form-group">
-        <input 
+        <input
           class="form-control form-control-lg" type="text"
           formControlName="vatNumber"
           placeholder="Your VAT number (alphanumeric only - no symbols)*"
-          [ngClass]="{'is-invalid': form.get('vatNumber').invalid }"
+          [ngClass]="{'is-invalid': form.get('vatNumber').invalid && form.dirty }"
         >
 
         <!--ERRORS-->
@@ -31,7 +31,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
           </div>
         </small>
       </div>
-      
+
       <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
         SUBMIT
       </button>
@@ -44,7 +44,7 @@ export class Ex4FormBuilderComponent {
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       company: [null, Validators.required],
-      vatNumber: ['', Validators.compose([Validators.required, vatValidator])]
+      vatNumber: ['', [Validators.required, vatValidator]]
     });
   }
 
